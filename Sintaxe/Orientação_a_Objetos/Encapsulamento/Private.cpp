@@ -1,5 +1,4 @@
 #include <iostream>
-
 class Exemplo {    
 private:               
     int numero;         

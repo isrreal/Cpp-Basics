@@ -1,31 +1,32 @@
 #include <iostream>
-#include <algorithm>
 #define jooj "\n\n\n"
 class Animal {
-public:
+protected:
     std::string especie;
     unsigned short int patas;
     // para declarar como virtual, apenas coloque a palavra-chave "virtual" no início da função
-    virtual void comer() {   std::cout << "Aqui ta padraozinho";     };     /*  
-                                                                                Declarado virtual porque o método assumirá comportamentos discrepantes
-                                                                                dependendo da classe que herdadará a "classe pai" 
-                                                                                provavelmente terá características distintas
-                                                                           */
+    virtual void comer() {   std::cout << "Aqui ta padraozinho";     };     
+    /*  
+        Declarado virtual porque o método assumirá comportamentos discrepantes
+        dependendo da classe que herdadará a "classe pai" 
+        provavelmente terá características distintas
+    */
 };
-class Leao: Animal{
+class Leao: public Animal {
 public:
     Leao(std::string especie, int patas ) {
         this->especie = especie;
         this->patas = patas;
     }
-    /*a palavra chave override sobrescreve a função da classe pai, mas não pode ter alteração de argumentos
+    /*
+        a palavra chave override sobrescreve a função da classe pai, mas não pode ter alteração de argumentos
         exemplo:
             void comer(std::strin alimento) override{}       
             estaria errado, pois o método virtual na classe pai não possui argumentos 
-                */
+    */
     void comer() override {    std::cout <<"NHAM NHAM " << "carne"  << " NHAM NHAM\n\n\n";        }                
 };
-class Zebra:Animal {
+class Zebra: public Animal {
 public:
     Zebra(std::string especie, int patas ) {
         this->especie = especie;
