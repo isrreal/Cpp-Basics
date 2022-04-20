@@ -13,8 +13,9 @@ int main(){
     std::vector<int>::iterator it = numeros.begin();       
     // sintaxe:   
     //  <tipo da variavel que vai ser iterada> :: iterator <nome do iterador> */      
-    for(it; it != numeros.end(); it++)
+    for(it; it != numeros.end(); it++) {
         // para referenciar um iterator, usa-se o um
         // ponteiro antes do nome da variável   
-        std::cout << *it << "\n";     
+        std::cout << *it << " ";     
+    }
 }
