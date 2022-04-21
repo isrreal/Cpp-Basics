@@ -16,6 +16,6 @@ int main(){
     for(it; it != numeros.end(); it++) {
         // para referenciar um iterator, usa-se o um
         // ponteiro antes do nome da variável   
-        std::cout << *it << " ";     
+        std::cout << *it << " ";  
     }
 }
