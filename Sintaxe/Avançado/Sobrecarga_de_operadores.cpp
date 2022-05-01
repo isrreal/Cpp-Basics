@@ -1,10 +1,10 @@
 #include <iostream>
-class Pessoa{
+class Pessoa {
 private:
-    std::string nome = "";
-    unsigned int idade = 0;
+    std::string nome;
+    unsigned int idade;
 public:    
-    Pessoa(std::string n, unsigned int i){nome = n; idade = i;}
+    Pessoa(std::string n, unsigned int i): nome(n), idade(i) {}
     friend std::ostream& operator<<(std::ostream& os, const Pessoa& pessoa);    
     /* 
         Foi criado o friend dessa classe para termos a capacidade de utilizar 

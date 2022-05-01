@@ -1,5 +1,5 @@
 #include <iostream>
-template <typename soma> soma SOMA (soma a, soma b) {   /*  criando um template e uma função
+template<typename soma> soma SOMA (soma a, soma b) {   /*  criando um template e uma função
 
                                                             Sintaxe: 
 
