@@ -12,7 +12,7 @@ int main(){
 /* 
     o construtor da classe exige uma alocação, como
     um ponteiro comum
-    exemplo: std::shared_ptr<tipo> nome(new tipo[quantidade])
+    exemplo: std::unique_ptr<tipo> nome(new tipo[quantidade])
     quer dizer que só pode ter um ponteiro nesse bloco de memória
 */
     std::unique_ptr<int> int_ptr(new int[1]);   
@@ -23,6 +23,7 @@ int main(){
     std::shared_ptr<int> int_ptr_shrd(new int[1024]);    
     std::shared_ptr<int> int_ptr_shrd2;
     int_ptr_shrd2 = int_ptr_shrd;                       
+    *int_ptr_shrd = 6;
     std::cout << "Valor do ponteiro 1: " << *int_ptr_shrd << "  endereço: "<< &int_ptr_shrd << "\n\n";
     std::cout << "Valor do ponteiro 2: " << *int_ptr_shrd2 <<"  endereço: "<< &int_ptr_shrd2;           
 }

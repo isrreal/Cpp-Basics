@@ -24,7 +24,7 @@ public:
             void comer(std::strin alimento) override{}       
             estaria errado, pois o método virtual na classe pai não possui argumentos 
     */
-    void comer() override {    std::cout <<"NHAM NHAM " << "carne"  << " NHAM NHAM\n\n\n";        }                
+    void comer() override {    std::cout <<"NHAM NHAM " << "carne" << " NHAM NHAM\n\n\n";        }                
 };
 class Zebra: public Animal {
 public:

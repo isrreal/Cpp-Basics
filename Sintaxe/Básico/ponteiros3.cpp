@@ -6,6 +6,4 @@ int main() {
     int* ponteiro = vetor;
     std::cout << "um ponteiro SEMPRE aponta para o primeiro elemento do array: " << std::endl;
     std::cout << *ponteiro << std::endl;
-
-
 }
