@@ -1,52 +1,49 @@
 #include <iostream>
 #include <vector>
-void merge(std::vector<int>& A, int start, int end) {
-    std::vector<int> B;
-    B.resize(end);
-    int mid = (start + end) / 2;
-    //índice inicial do vetor auxiliar
-    int inicioDoVetorAux = 0;    
-    // índice inicial do vetor original 
-    int inicioOriginal = start; 
-    // índice da metade direita do vetor original
-    int metadeDireita = mid + 1; 
-    // se o indice inicial do vetor auxiliar for menor ou igual ao meio
-    // e o indice da metade direita do vetor orginal for menor ou igual ao indice final
-    while (inicioDoVetorAux <= mid && metadeDireita <= end) {   
-        // vetor original na posição inicial é menor ou igual a segunda metade dele?
-        if (A[inicioOriginal++] <= A[metadeDireita++]) 
-        // se for, então o vetor auxiliar na posição inicial recebe o elemento do vetor original na posição inicial
-            B[inicioDoVetorAux++] = A[inicioOriginal++]; 
+void merge(std::vector<int>& vetor, int start, int mid, int end){
+    // vetor auxiliar
+    std::vector<int> vetorAuxiliar;
+    vetorAuxiliar.resize(end - start + 1);
+    int start1 = start;
+    int start2 = mid + 1;
+    // inicio do vetor auxiliar
+    int start3 = 0;
+    // compara as duas metades do vetor já existente
+    while (start1 <= mid && start2 <= end){
+        if(vetor[start1] <= vetor[start2])
+            // vetor auxiliar recebe a posição
+            vetorAuxiliar[start3++] = vetor[start1++];
         else
-        // senao ele recebe o elemento do indice da metade direita
-            B[inicioDoVetorAux++] = A[metadeDireita++];
+            vetorAuxiliar[start3++] = vetor[start2++];
     }
-    while (metadeDireita <= mid)
-        B[inicioDoVetorAux++] = A[inicioOriginal++];
-    while (metadeDireita <= end)
-        B[inicioDoVetorAux++] = A[metadeDireita++]; 
-    for (int i = start; i < end; i++)
-        A[i] = B[i];
+    // adiciona o vetor ja ordenado até a parte esquerda
+    while (start1 <= mid)
+        vetorAuxiliar[start3++] = vetor[start1++];
+    // adiciona o valor ordenado da metade até o fim
+    while(start2 <= end)
+        vetorAuxiliar[start3++] = vetor[start2++];
+    // igualando o vetor original com o auxiliar
+    for (int i = start, j = 0; i <= end; i++, j++)
+        vetor[i] = vetorAuxiliar[j];
 }
 
-void mergeSort(std::vector<int>& vetor, int start, int end) {
-    if (start < end) {
-        int mid = (start + end) / 2;
-        mergeSort(vetor, start, mid); // ordena o subvetor da esquerda
-        mergeSort(vetor, mid + 1, end); // ordena o subvetor da direita 
-        merge(vetor, start, end); // junta as matrizes
+void mergesort(std::vector <int> & A, int start, int end ){
+    if(end > start){
+        int mid = (start + end)/2;
+        mergesort(A, start, mid);
+               mergesort(A, mid+1, end);
+               merge(A, start, mid, end );
     }
 }
+
 void printar(std::vector<int>& vetor) {
-    for (auto it: vetor)
-        std::cout << it << " ";
+    for (auto i: vetor)
+        std::cout << i << " ";
 }
+
 int main() {
-   /*  size_t tamanho = 0;  
-    std::cin >> tamanho; */
-    std::vector<int> vetor = {1, 5, -4, 2, 5};
-    /* for (size_t i = 0; i < vetor.size(); i++)
-        std::cin >> vetor[i]; */
-    mergeSort(vetor, 0, vetor.size());
-    printar(vetor);
+    std::vector<int> A ({5,6,4,3,1,3,8,5,9});
+    mergesort(A, 0, A.size() - 1);
+    printar(A);
 }
+

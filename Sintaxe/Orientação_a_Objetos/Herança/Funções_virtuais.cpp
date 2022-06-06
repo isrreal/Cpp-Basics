@@ -8,8 +8,8 @@ protected:
     virtual void comer() {   std::cout << "Aqui ta padraozinho";     };     
     /*  
         Declarado virtual porque o método assumirá comportamentos discrepantes
-        dependendo da classe que herdadará a "classe pai" 
-        provavelmente terá características distintas
+        dependendo da classe que herdadará a "classe pai", e, 
+        provavelmente, terá características distintas.
     */
 };
 class Leao: public Animal {
@@ -26,6 +26,7 @@ public:
     */
     void comer() override {    std::cout <<"NHAM NHAM " << "carne" << " NHAM NHAM\n\n\n";        }                
 };
+
 class Zebra: public Animal {
 public:
     Zebra(std::string especie, int patas ) {
